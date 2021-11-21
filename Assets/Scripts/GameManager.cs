@@ -53,6 +53,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("PLAY AGAIN CLICKED");
         gameState = gameStates.Playing;
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level-1", LoadSceneMode.Single);
     }
 }

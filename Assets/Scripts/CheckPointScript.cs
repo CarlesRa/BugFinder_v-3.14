@@ -20,15 +20,6 @@ public class CheckPointScript : MonoBehaviour
         player.checkPointPosition = new Vector2(transform.position.x, transform.position.y);
         StartCoroutine(resetCollider());
     }
-   /* private void OnCollisionEnter2D(Collision2D collision)
-    {
-        PlayerScript player = collision.gameObject.GetComponent<PlayerScript>();
-        if (!player)
-            return;
-        _collider.enabled = false;
-        player.checkPointPosition = new Vector2(transform.position.x, transform.position.y);
-        StartCoroutine(resetCollider());
-    }*/
 
     IEnumerator resetCollider()
     {
