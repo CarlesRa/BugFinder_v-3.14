@@ -16,12 +16,5 @@ public class CameraFollow : MonoBehaviour
         Vector3 position = transform.position;
         position.x = player.transform.position.x;
         transform.position = position;
-        if (heart1 == null)
-            return;
-        heart1.transform.position = new Vector2(transform.position.x - 1.90f, transform.position.y + 0.93f);
-        if (heart2 != null)
-            heart2.transform.position = new Vector2(transform.position.x - 1.79f, transform.position.y + 0.93f);
-        if (heart3 != null)
-            heart3.transform.position = new Vector2(transform.position.x - 1.68f, transform.position.y + 0.93f);
     }
 }

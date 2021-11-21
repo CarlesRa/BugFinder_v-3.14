@@ -9,9 +9,7 @@ public class PlayerScript : MonoBehaviour
     public bool canMove = true;
     public bool isAttacking = false;
     public int health = 3;
-    public GameObject heart1;
-    public GameObject heart2;
-    public GameObject heart3;
+    public GameObject livesCanvas;
     public bool grounded;
     public float speed;
     public float jumpForce;
@@ -100,41 +98,24 @@ public class PlayerScript : MonoBehaviour
 
     public void goToInitialPosition()
     {
-        transform.position = AllHeartsLosed() ? startPosition : checkPointPosition;
-        if (AllHeartsLosed())
+        transform.position = health == 0 ? startPosition : checkPointPosition;
+        if (health == 0)
+        {
+            health = 3;
             restoreLife();
+        }
         canMove = true;
     }
 
     public void LoseLife()
     {
-        if (heart3.activeSelf)
-        {
-            heart3.SetActive(false);
-        }
-        else if (heart2.activeSelf)
-        {
-            heart2.SetActive(false);
-        }
-        else if (heart1.activeSelf)
-        {
-            heart1.SetActive(false);
-        }
+        health--;
+        livesCanvas.GetComponent<UiManagerScript>().updateLives(health);
     }
 
     public void restoreLife()
     {
-        heart1.SetActive(true);
-        heart2.SetActive(true);
-        heart3.SetActive(true);
         checkPointPosition = startPosition;
-    }
-
-    public bool AllHeartsLosed()
-    {
-        if (!heart1.activeSelf && !heart2.activeSelf && !heart3.activeSelf)
-            return true;
-        else
-            return false;
+        livesCanvas.GetComponent<UiManagerScript>().updateLives(health);
     }
 }

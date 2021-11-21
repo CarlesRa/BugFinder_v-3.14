@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class CheckPointScript : MonoBehaviour
 {
-    private Collider2D collider;
+    private Collider2D _collider;
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerScript player = collision.GetComponent<PlayerScript>();
+        if (!player)
+            return;
+        _collider.enabled = false;
+        player.checkPointPosition = new Vector2(transform.position.x, transform.position.y);
+        StartCoroutine(resetCollider());
+    }
+   /* private void OnCollisionEnter2D(Collision2D collision)
     {
         PlayerScript player = collision.gameObject.GetComponent<PlayerScript>();
         if (!player)
             return;
-        collider.enabled = false;
+        _collider.enabled = false;
         player.checkPointPosition = new Vector2(transform.position.x, transform.position.y);
         StartCoroutine(resetCollider());
-    }
+    }*/
 
     IEnumerator resetCollider()
     {
         yield return new WaitForSeconds(5);
-        collider.enabled = true;
+        _collider.enabled = true;
     }
 }

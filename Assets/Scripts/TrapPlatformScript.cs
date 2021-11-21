@@ -22,6 +22,7 @@ public class TrapPlatformScript : MonoBehaviour
         Debug.Log("Colission enter");
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(1);
+        spriteRenderer.enabled = false;
         rigidbody2.enabled = false;
         StartCoroutine(EnableBoxColider2D());
     }
@@ -30,6 +31,7 @@ public class TrapPlatformScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         rigidbody2.enabled = true;
+        spriteRenderer.enabled = true;
         spriteRenderer.color = Color.white;
     }
 }
