@@ -120,28 +120,6 @@ public class PlayerScript : MonoBehaviour
         {
             heart1.SetActive(false);
         }
-        /*switch (health)
-
-        {
-            case 3:
-                heart3.SetActive(false);
-                break;
-            case 2:
-                heart2.SetActive(false);
-                break;
-            case 1:
-                heart1.SetActive(false);
-                break;
-        }
-        health--;*/
-    }
-
-    public bool AllHeartsLosed()
-    {
-        if (!heart1.activeSelf && !heart2.activeSelf && !heart3.activeSelf)
-            return true;
-        else
-            return false;
     }
 
     public void restoreLife()
@@ -150,5 +128,13 @@ public class PlayerScript : MonoBehaviour
         heart2.SetActive(true);
         heart3.SetActive(true);
         health = 3;
+    }
+
+    public bool AllHeartsLosed()
+    {
+        if (!heart1.activeSelf && !heart2.activeSelf && !heart3.activeSelf)
+            return true;
+        else
+            return false;
     }
 }
