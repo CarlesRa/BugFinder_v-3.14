@@ -17,5 +17,12 @@ public class CheckPointScript : MonoBehaviour
             return;
         collider.enabled = false;
         player.checkPointPosition = new Vector2(transform.position.x, transform.position.y);
+        StartCoroutine(resetCollider());
+    }
+
+    IEnumerator resetCollider()
+    {
+        yield return new WaitForSeconds(5);
+        collider.enabled = true;
     }
 }

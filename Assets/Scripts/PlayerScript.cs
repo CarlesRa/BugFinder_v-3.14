@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     public float speed;
     public float jumpForce;
     public Animator animator;
-    public Vector2 initialPosition;
+    public Vector2 startPosition;
     public Vector2 checkPointPosition;
 
     private Rigidbody2D _rigidbody2D;
@@ -32,8 +32,8 @@ public class PlayerScript : MonoBehaviour
         speed = 1;
         jumpForce = 150;
         animator = GetComponent<Animator>();
-        initialPosition = new Vector2(transform.position.x, transform.position.y);
-        checkPointPosition = initialPosition;
+        startPosition = new Vector2(transform.position.x, transform.position.y);
+        checkPointPosition = startPosition;
     }
 
     void Update()
@@ -100,7 +100,7 @@ public class PlayerScript : MonoBehaviour
 
     public void goToInitialPosition()
     {
-        transform.position = AllHeartsLosed() ? initialPosition : checkPointPosition;
+        transform.position = AllHeartsLosed() ? startPosition : checkPointPosition;
         if (AllHeartsLosed())
             restoreLife();
         canMove = true;
@@ -127,7 +127,7 @@ public class PlayerScript : MonoBehaviour
         heart1.SetActive(true);
         heart2.SetActive(true);
         heart3.SetActive(true);
-        health = 3;
+        checkPointPosition = startPosition;
     }
 
     public bool AllHeartsLosed()
